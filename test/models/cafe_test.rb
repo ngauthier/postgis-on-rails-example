@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class CafeTest < ActiveSupport::TestCase
-  test "closest cafes to a point" do
+  test "close cafes" do
     far_cafe = Cafe.create!(
       name:      "Far Cafe",
       latitude:   40.000000,
@@ -10,10 +10,13 @@ class CafeTest < ActiveSupport::TestCase
 
     close_cafe = Cafe.create!(
       name:      "Close Cafe",
-      latitude:   39.100000,
-      longitude: -75.900000
+      latitude:   39.010000,
+      longitude: -75.990000
     )
 
-    assert_equal [close_cafe, far_cafe], Cafe.closest(39.000000, -76.000000)
+    close_cafes = Cafe.close_to(39.000000, -76.000000).load
+
+    assert_equal 1,          close_cafes.size
+    assert_equal close_cafe, close_cafes.first
   end
 end

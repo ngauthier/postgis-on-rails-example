@@ -100,6 +100,13 @@ ALTER TABLE ONLY cafes
 
 
 --
+-- Name: index_on_cafes_location; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_on_cafes_location ON cafes USING gist (st_geographyfromtext((((('SRID=4326;POINT('::text || latitude) || ' '::text) || longitude) || ')'::text)));
+
+
+--
 -- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -136,3 +143,5 @@ SET search_path TO "$user",public;
 INSERT INTO schema_migrations (version) VALUES ('20130818184919');
 
 INSERT INTO schema_migrations (version) VALUES ('20130818190628');
+
+INSERT INTO schema_migrations (version) VALUES ('20130818193439');
