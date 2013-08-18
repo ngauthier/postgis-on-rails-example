@@ -1,0 +1,9 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: refuelly_development
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: refuelly_test
