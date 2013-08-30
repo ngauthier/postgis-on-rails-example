@@ -103,7 +103,7 @@ ALTER TABLE ONLY cafes
 -- Name: index_on_cafes_location; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE INDEX index_on_cafes_location ON cafes USING gist (st_geographyfromtext((((('SRID=4326;POINT('::text || latitude) || ' '::text) || longitude) || ')'::text)));
+CREATE INDEX index_on_cafes_location ON cafes USING gist (st_geographyfromtext((((('SRID=4326;POINT('::text || longitude) || ' '::text) || latitude) || ')'::text)));
 
 
 --

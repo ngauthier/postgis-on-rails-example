@@ -5,11 +5,11 @@ class Cafe < ActiveRecord::Base
     where(%{
       ST_DWithin(
         ST_GeographyFromText(
-          'SRID=4326;POINT(' || cafes.latitude || ' ' || cafes.longitude || ')'
+          'SRID=4326;POINT(' || cafes.longitude || ' ' || cafes.latitude || ')'
         ),
         ST_GeographyFromText('SRID=4326;POINT(%f %f)'),
         %d
       )
-    } % [latitude, longitude, distance_in_meters])
+    } % [longitude, latitude, distance_in_meters])
   }
 end
